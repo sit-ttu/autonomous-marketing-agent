@@ -1,0 +1,44 @@
+{
+  "id": "meta-ads",
+  "enabledByDefault": false,
+  "providerAuthEnvVars": {
+    "meta-ads": ["META_ADS_ACCESS_TOKEN"]
+  },
+  "uiHints": {
+    "accessToken": {
+      "label": "Meta Ads access token",
+      "help": "Long-lived token with ads_read. Prefer SecretRef in production. Fallback: META_ADS_ACCESS_TOKEN.",
+      "sensitive": true
+    },
+    "defaultAdAccountId": {
+      "label": "Default ad account ID",
+      "help": "Numeric id or act_1234567890 form.",
+      "placeholder": "act_1234567890"
+    },
+    "apiVersion": {
+      "label": "Graph API version",
+      "help": "Default v21.0. Change only when Meta deprecates a version.",
+      "placeholder": "v21.0"
+    }
+  },
+  "contracts": {
+    "tools": [
+      "meta_ads_accounts_list",
+      "meta_ads_campaigns_list",
+      "meta_ads_adsets_list",
+      "meta_ads_ads_list",
+      "meta_ads_insights_get",
+      "meta_ads_creatives_get",
+      "meta_ads_recommendations_generate"
+    ]
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "accessToken": { "type": ["string", "object"] },
+      "defaultAdAccountId": { "type": "string" },
+      "apiVersion": { "type": "string" }
+    }
+  }
+}

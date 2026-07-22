@@ -1,0 +1,35 @@
+{
+  "id": "social-post",
+  "enabledByDefault": false,
+  "providerAuthEnvVars": {
+    "social-post": ["META_PAGE_ACCESS_TOKEN"]
+  },
+  "uiHints": {
+    "pageAccessToken": {
+      "label": "Facebook Page access token",
+      "help": "Page token with pages_manage_posts. Fallback: META_PAGE_ACCESS_TOKEN.",
+      "sensitive": true
+    },
+    "pageId": {
+      "label": "Facebook Page ID",
+      "help": "Numeric Page ID used for /{page-id}/feed publishes.",
+      "placeholder": "1234567890"
+    },
+    "apiVersion": {
+      "label": "Graph API version",
+      "placeholder": "v21.0"
+    }
+  },
+  "contracts": {
+    "tools": ["social_meta_page_publish"]
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "pageAccessToken": { "type": ["string", "object"] },
+      "pageId": { "type": "string" },
+      "apiVersion": { "type": "string" }
+    }
+  }
+}

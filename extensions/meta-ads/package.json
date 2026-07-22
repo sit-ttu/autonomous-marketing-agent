@@ -1,0 +1,16 @@
+{
+  "name": "@foxfang/meta-ads",
+  "version": "2026.3.27",
+  "private": true,
+  "description": "FoxFang Meta Ads plugin — read-only Marketing API insights for paid social analysis",
+  "type": "module",
+  "main": "./index.ts",
+  "devDependencies": {
+    "foxfang": "workspace:*"
+  },
+  "foxfang": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

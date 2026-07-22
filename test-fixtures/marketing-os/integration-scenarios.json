@@ -1,0 +1,235 @@
+{
+  "suiteId": "foxfang-marketing-os-vinamilk-integration-suite",
+  "version": 3,
+  "description": "Kịch bản integration test mở rộng cho marketing store, runtime auth/gateway/channel/skill/memory, agent runtime, CLI surfaces, plugin/channel/device/webhook/security và marketing agent với state/config dir cô lập.",
+  "brandFixture": "test-fixtures/marketing-os/brand-vinamilk.json",
+  "scenarios": [
+    {
+      "id": "INT-VINAMILK-001",
+      "title": "Seed brand Vinamilk vào marketing store",
+      "assertions": [
+        "store.json được tạo trong state dir test",
+        "brands có brand-vinamilk",
+        "brand giữ voice, audience và guardrail phê duyệt"
+      ]
+    },
+    {
+      "id": "INT-VINAMILK-002",
+      "title": "Tạo cross-platform PostDraft cho Facebook, TikTok, LinkedIn và email",
+      "assertions": [
+        "tạo đúng 4 post drafts",
+        "tất cả draft có status draft",
+        "không có approval và không có trạng thái published"
+      ]
+    },
+    {
+      "id": "INT-VINAMILK-003",
+      "title": "Request publish approval chặn outbound trước khi duyệt",
+      "assertions": [
+        "approval status là pending",
+        "draft chuyển sang pending_approval",
+        "canPublishPostDraft trả allowed false",
+        "assertMarketingOutboundAllowed chặn send thật khi draft chưa approved"
+      ]
+    },
+    {
+      "id": "INT-VINAMILK-004",
+      "title": "Resolve approval rồi schedule draft đã duyệt",
+      "assertions": [
+        "approval status là approved",
+        "draft chuyển sang approved",
+        "schedulePostDraft chỉ chạy sau approved",
+        "draft chuyển sang scheduled và có scheduledAt"
+      ]
+    },
+    {
+      "id": "INT-VINAMILK-005",
+      "title": "List due scheduled drafts chỉ trả draft đã approved và đến hạn",
+      "assertions": [
+        "due list có đúng draft đã schedule quá khứ",
+        "recommendedTool cho Facebook là social_meta_page_publish",
+        "draft chưa duyệt hoặc chưa đến hạn không xuất hiện"
+      ]
+    },
+    {
+      "id": "INT-AUTH-PROVIDER-001",
+      "title": "Model auth profile được tạo, che secret và đọc được thứ tự ưu tiên theo agent",
+      "assertions": [
+        "models auth paste-token/login dùng temp config và token placeholder",
+        "output không chứa token thô hoặc credential path cá nhân",
+        "models auth order get trả đúng provider/profile cho agent test",
+        "fallback profile được giữ nguyên khi profile đầu bị mock expired"
+      ]
+    },
+    {
+      "id": "INT-AUTH-GATEWAY-001",
+      "title": "Gateway tool đọc config/schema và từ chối patch protected exec paths",
+      "assertions": [
+        "config.get trả snapshot có base hash",
+        "config.schema.lookup chạy trước config.patch cho path cần đổi",
+        "config.patch an toàn giữ note/restart metadata",
+        "patch thay đổi tools.exec.ask hoặc tools.exec.security bị reject và config không đổi"
+      ]
+    },
+    {
+      "id": "INT-CHANNEL-CONNECT-001",
+      "title": "Channel add/login/status dùng temp config và không lộ token",
+      "assertions": [
+        "channels add tạo hoặc cập nhật đúng account id cho Telegram test",
+        "channels login gọi auth-only flow cho channel hỗ trợ login và không ghi đè config ngoài kỳ vọng",
+        "channels list/status --probe hiển thị channel/account và trạng thái probe",
+        "stdout/stderr/report không chứa token placeholder hoặc token thật"
+      ]
+    },
+    {
+      "id": "INT-CHANNEL-PAIR-001",
+      "title": "DM pairing tạo pending request, approve đúng account scope và không cấp quyền group",
+      "assertions": [
+        "unknown DM trong dmPolicy=pairing tạo pending code và không dispatch agent",
+        "pairing list trả pending request đúng channel/account",
+        "pairing approve chuyển sender vào allow store đúng scope",
+        "group sender auth không kế thừa DM pairing nếu group allowlist chưa cho phép"
+      ]
+    },
+    {
+      "id": "INT-SKILL-001",
+      "title": "Skill search/install/list/check vận hành trong workspace cô lập",
+      "assertions": [
+        "skills search trả skill mock đúng slug",
+        "skills install ghi SKILL.md vào active workspace, không ghi global path",
+        "install lại không --force không overwrite skill hiện có",
+        "skills check phân biệt eligible và missing requirements"
+      ]
+    },
+    {
+      "id": "INT-MEMORY-001",
+      "title": "Short memory dùng session context, long memory dùng search/get và surfacing khi disabled",
+      "assertions": [
+        "request trong cùng session dùng previous turn để giữ giọng văn mà không tạo long memory mới",
+        "memory_search tìm đúng snippet brand/insight từ memory seed",
+        "memory_get chỉ đọc đoạn path/line cần thiết sau search",
+        "memory backend disabled/error được báo rõ thay vì bịa dữ liệu"
+      ]
+    },
+    {
+      "id": "INT-AGENT-RUNTIME-001",
+      "title": "Agent runtime giữ session, tool policy, provider fallback và cron dispatch",
+      "assertions": [
+        "agent via gateway yêu cầu message và target session/agent rõ ràng",
+        "tool policy loại ownerOnly gateway tool khỏi phiên non-owner",
+        "model router fallback sang profile dự phòng khi profile đầu lỗi",
+        "cron due run được chuyển thành agent request và reply về đúng channel/session"
+      ]
+    },
+    {
+      "id": "INT-MARKETING-EXT-001",
+      "title": "Marketing agent bao phủ brand upsert, store review, denied approval và read-only ads",
+      "assertions": [
+        "marketing_brand_upsert ghi brand vào marketing/store.json trong state dir test",
+        "marketing_store_list trả recent drafts và pending approvals theo limit",
+        "approval denied không cho schedule/publish và draft không chuyển approved",
+        "ads analysis chỉ dùng read-only insight/recommendation, không gọi ads_write hoặc budget mutation"
+      ]
+    },
+    {
+      "id": "INT-CONFIG-PLUGIN-001",
+      "title": "Config và plugin lifecycle trong temp config không leak secret",
+      "assertions": [
+        "config get/schema/validate chạy trước mutation",
+        "prototype-pollution keys bị reject",
+        "plugins list/inspect phân loại capability đúng",
+        "optional plugin enable/disable làm tool visibility đổi theo policy"
+      ]
+    },
+    {
+      "id": "INT-AGENT-SESSION-001",
+      "title": "Agent management, routing bindings và session history an toàn",
+      "assertions": [
+        "agents add/set-identity không overclaim marketing autonomy",
+        "bind/unbind chỉ đổi route target",
+        "sessions history redacts secret placeholders",
+        "cleanup giữ active/pinned sessions"
+      ]
+    },
+    {
+      "id": "INT-MESSAGE-CRON-001",
+      "title": "Message actions và cron lifecycle giữ approval/outbound boundary",
+      "assertions": [
+        "message dry-run không tạo outbound thật",
+        "broadcast marketing bị chặn khi thiếu approval",
+        "thread-reply giữ thread/session target",
+        "cron edit/run/runs ghi history và không gửi report chưa duyệt"
+      ]
+    },
+    {
+      "id": "INT-DEVICE-NODE-001",
+      "title": "Device pairing, token lifecycle và node command policy",
+      "assertions": [
+        "device approve/reject kiểm tra role/scopes/public key",
+        "rotate/revoke vô hiệu hóa token cũ và redacts token mới",
+        "nodes tool chặn invoke/camera khi thiếu scope",
+        "browser-capable node selection xử lý auto/explicit/no-node"
+      ]
+    },
+    {
+      "id": "INT-WEBHOOK-DIRECTORY-HOOK-001",
+      "title": "Webhook, directory và hooks là read-first, scoped, redacted",
+      "assertions": [
+        "webhook setup/run không lưu credential vào transcript",
+        "inbound sai signature/replay/rate-limit không dispatch agent",
+        "directory self/peers/groups/members là read-only",
+        "hooks check/enable/disable chỉ đổi hook target"
+      ]
+    },
+    {
+      "id": "INT-SECRET-SANDBOX-BACKUP-001",
+      "title": "Secrets, sandbox và backup giữ boundary với dữ liệu nhạy cảm",
+      "assertions": [
+        "secrets audit/apply/reload không in secret value",
+        "sandbox recreate/explain không mount path ngoài workspace",
+        "backup create/verify loại credential store",
+        "status/logs output redacted và read-only"
+      ]
+    },
+    {
+      "id": "INT-MEDIA-WEB-BROWSER-001",
+      "title": "Media, web fetch/search và browser plugin áp dụng policy runtime",
+      "assertions": [
+        "media fetch/server chặn private URL/path traversal/expired/oversized",
+        "web_search chọn đúng provider và không trùng native tool",
+        "web_fetch chặn private URL và chỉ dùng fallback khi configured",
+        "browser profile/headers/credentials cô lập"
+      ]
+    },
+    {
+      "id": "INT-VOICE-MCP-ACP-001",
+      "title": "Voice call, MCP và ACP/subagent runtime giữ scope và cleanup",
+      "assertions": [
+        "voice inbound policy chặn caller chưa phép",
+        "voice init failure cleanup webhook/tunnel",
+        "MCP method thiếu scope không expose token",
+        "ACP spawn/yield giữ transcript/routing và không gửi secret"
+      ]
+    },
+    {
+      "id": "INT-AUTOREPLY-SECURITY-001",
+      "title": "Auto-reply command gating, memory flush và prompt-injection defense",
+      "assertions": [
+        "native command từ sender chưa phép bị chặn trước handler",
+        "memory flush không lưu prompt injection hoặc secret",
+        "filesystem policy chặn path ngoài workspace",
+        "untrusted HTML/JSON không override approval/tool policy"
+      ]
+    },
+    {
+      "id": "INT-MARKETING-ADV-001",
+      "title": "Marketing advanced coverage cho adaptation, social publish dryRun và creative brief",
+      "assertions": [
+        "marketing_post_adapt_channels tạo variants theo platform constraints",
+        "social_meta_page_publish dryRun kiểm tra approved draft trước Graph API",
+        "campaign lifecycle response không overclaim complete suite",
+        "creative brief/asset checklist chỉ là draft, không upload/publish"
+      ]
+    }
+  ]
+}

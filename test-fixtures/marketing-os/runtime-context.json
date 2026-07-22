@@ -1,0 +1,165 @@
+{
+  "suitePurpose": "Dữ liệu giả lập để thiết kế test case vận hành Agent Runtime, auth, gateway, channel, skill và memory cho FoxFang Marketing OS.",
+  "authProviders": [
+    {
+      "providerId": "openai",
+      "methodId": "api-key",
+      "profileId": "openai:manual-marketing-test",
+      "tokenPlaceholder": "<OPENAI_API_KEY_TEST_PLACEHOLDER>",
+      "defaultModelExpectation": "gpt-5.4"
+    },
+    {
+      "providerId": "anthropic",
+      "methodId": "oauth",
+      "profileId": "anthropic:marketing-oauth-test",
+      "defaultModelExpectation": "sonnet-4.6"
+    }
+  ],
+  "gateway": {
+    "mode": "local",
+    "url": "http://127.0.0.1:18789",
+    "clientName": "cli",
+    "protectedConfigPaths": ["tools.exec.ask", "tools.exec.security"],
+    "safeConfigPatchExample": {
+      "commands": {
+        "restart": true
+      }
+    }
+  },
+  "channels": [
+    {
+      "channelId": "telegram",
+      "accountId": "marketing-test-bot",
+      "dmPolicy": "pairing",
+      "tokenPlaceholder": "<TELEGRAM_BOT_TOKEN_TEST_PLACEHOLDER>",
+      "sampleSenderId": "100000001"
+    },
+    {
+      "channelId": "whatsapp",
+      "accountId": "marketing-test-wa",
+      "authDirPlaceholder": "<TEMP_STATE_DIR>/whatsapp-auth",
+      "requiresInteractiveLogin": true
+    },
+    {
+      "channelId": "discord",
+      "accountId": "marketing-test-discord",
+      "dmPolicy": "pairing",
+      "sampleGuildId": "123456789012345678",
+      "sampleChannelId": "234567890123456789",
+      "sampleUserId": "345678901234567890"
+    }
+  ],
+  "skills": [
+    {
+      "slug": "marketing-brief-review",
+      "displayName": "Marketing Brief Review",
+      "expectedInstallScope": "active workspace",
+      "expectedFile": "skills/marketing-brief-review/SKILL.md"
+    },
+    {
+      "slug": "weekly-marketing-report",
+      "displayName": "Weekly Marketing Report",
+      "expectedInstallScope": "active workspace",
+      "expectedFile": "skills/weekly-marketing-report/SKILL.md"
+    }
+  ],
+  "marketingRuntime": {
+    "loop": [
+      "Brief",
+      "Strategy",
+      "Plan",
+      "Create",
+      "Approve",
+      "Publish",
+      "Measure",
+      "Learn",
+      "Optimize"
+    ],
+    "approvalPrinciple": "read-first, draft-first, approval-before-write",
+    "writeActionsRequiringApproval": [
+      "publish_post",
+      "bulk_message",
+      "ads_write",
+      "integration_write"
+    ]
+  },
+  "cliSurfaces": {
+    "config": ["get", "set", "unset", "schema", "validate", "file"],
+    "plugins": [
+      "list",
+      "inspect",
+      "enable",
+      "disable",
+      "install",
+      "update",
+      "doctor",
+      "marketplace list"
+    ],
+    "agents": ["list", "add", "set-identity", "bindings", "bind", "unbind", "delete"],
+    "sessions": ["list", "history", "cleanup"],
+    "message": [
+      "send",
+      "broadcast",
+      "read",
+      "search",
+      "thread-reply",
+      "react",
+      "poll",
+      "discord-admin-actions"
+    ],
+    "cron": ["status", "list", "add", "edit", "rm", "run", "runs"],
+    "devices": ["list", "approve", "reject", "rotate", "revoke", "remove", "clear"],
+    "webhooks": ["gmail setup", "gmail run"],
+    "directory": ["self", "peers list", "groups list", "members"],
+    "hooks": ["list", "info", "check", "enable", "disable", "install", "update"],
+    "secrets": ["audit", "configure", "apply", "reload"],
+    "sandbox": ["list", "recreate", "explain"],
+    "backup": ["create", "verify"],
+    "status": ["status", "health", "logs"]
+  },
+  "securityFixtures": {
+    "secretPlaceholders": [
+      "<OPENAI_API_KEY_TEST_PLACEHOLDER>",
+      "<TELEGRAM_BOT_TOKEN_TEST_PLACEHOLDER>",
+      "<WEBHOOK_SECRET_TEST_PLACEHOLDER>"
+    ],
+    "blockedConfigKeys": ["__proto__", "constructor.prototype", "prototype"],
+    "unsafePaths": [
+      "../outside-workspace",
+      "/home/user/.foxfang/credentials",
+      "/tmp/unrelated-secret.txt"
+    ],
+    "unsafeUrls": ["http://127.0.0.1:1234/internal", "http://169.254.169.254/latest/meta-data"]
+  },
+  "pluginFixtures": {
+    "toolPlugins": [
+      "memory-core",
+      "memory-lancedb",
+      "social-post",
+      "meta-ads",
+      "browser",
+      "voice-call",
+      "github",
+      "tavily",
+      "firecrawl"
+    ],
+    "providerPlugins": ["openai", "anthropic", "google", "openrouter", "xai", "ollama"],
+    "channelPlugins": [
+      "telegram",
+      "discord",
+      "slack",
+      "signal",
+      "whatsapp",
+      "matrix",
+      "zalo",
+      "msteams"
+    ],
+    "optionalPlugins": ["social-post", "meta-ads", "llm-task", "voice-call"]
+  },
+  "nodeFixtures": {
+    "deviceId": "node-marketing-demo",
+    "safeScopes": ["operator.read", "operator.write"],
+    "dangerousScopes": ["operator.admin"],
+    "browserCapableKinds": ["browser", "desktop-browser"]
+  }
+}

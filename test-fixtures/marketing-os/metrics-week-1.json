@@ -1,0 +1,35 @@
+{
+  "campaignId": "campaign-vinamilk-green-farm-14d",
+  "period": "week-1",
+  "channels": [
+    {
+      "channel": "facebook",
+      "impressions": 18400,
+      "ctr": 0.028,
+      "leads": 52,
+      "positiveComments": 61,
+      "negativeComments": 8
+    },
+    {
+      "channel": "tiktok",
+      "impressions": 42600,
+      "ctr": 0.016,
+      "leads": 47,
+      "positiveComments": 104,
+      "negativeComments": 19
+    },
+    {
+      "channel": "linkedin",
+      "impressions": 5100,
+      "ctr": 0.021,
+      "leads": 12,
+      "positiveComments": 17,
+      "negativeComments": 2
+    }
+  ],
+  "notes": [
+    "TikTok có lượt hiển thị cao nhưng CTR thấp hơn Facebook.",
+    "Một số bình luận hỏi về Green Farm, nguồn gốc sữa và sản phẩm không đường.",
+    "Không có dữ liệu doanh thu thực tế trong bộ dữ liệu kiểm thử."
+  ]
+}

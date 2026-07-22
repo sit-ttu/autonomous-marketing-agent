@@ -1,0 +1,16 @@
+{
+  "name": "@foxfang/social-post",
+  "version": "2026.3.27",
+  "private": true,
+  "description": "FoxFang social publish plugin — Meta Page publish behind marketing approval gate",
+  "type": "module",
+  "main": "./index.ts",
+  "devDependencies": {
+    "foxfang": "workspace:*"
+  },
+  "foxfang": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

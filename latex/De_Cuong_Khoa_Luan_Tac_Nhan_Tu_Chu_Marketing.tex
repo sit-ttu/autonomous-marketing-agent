@@ -1,0 +1,309 @@
+% !TEX program = xelatex
+% Đề cương Khóa luận / Đồ án tốt nghiệp (theo mẫu 10N - Điều 1)
+\documentclass[a4paper]{article}
+\nonstopmode
+\usepackage[fontsize=13pt]{fontsize}
+\usepackage[a4paper,left=3cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}[Ligatures=TeX]\setsansfont{Times New Roman}[Ligatures=TeX]}{\setmainfont{Tinos}[Ligatures=TeX]\setsansfont{Tinos}[Ligatures=TeX]}
+\IfFontExistsTF{Courier New}{\setmonofont{Courier New}[Scale=MatchLowercase]}{\setmonofont{DejaVu Sans Mono}[Scale=MatchLowercase]}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{4pt}
+\sloppy
+\emergencystretch=3em
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable,booktabs,array,calc}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage{hyperref}
+\hypersetup{unicode=true,colorlinks=true,linkcolor=black,citecolor=blue}
+\usepackage{bookmark}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{eso-pic}
+\newcommand{\coverframe}{\AddToShipoutPictureBG*{\AtPageLowerLeft{\put(\LenToUnit{1.3cm},\LenToUnit{1.3cm}){\framebox(\LenToUnit{\paperwidth-2.6cm},\LenToUnit{\paperheight-2.6cm}){}}}}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\setlist[itemize]{leftmargin=1.1cm,itemsep=0.12em,topsep=0.15em}
+\setlist[enumerate]{leftmargin=1.1cm,itemsep=0.12em,topsep=0.15em}
+\urlstyle{same}
+\captionsetup[table]{labelsep=period,font=normalsize,justification=raggedright,singlelinecheck=false}
+\renewcommand{\contentsname}{MỤC LỤC}
+\renewcommand{\tablename}{Bảng}
+\setcounter{tocdepth}{2}
+\titleformat{\section}{\normalfont\bfseries\centering\fontsize{14pt}{18pt}\selectfont}{}{0pt}{}
+\titleformat{\subsection}{\normalfont\bfseries\fontsize{13pt}{16pt}\selectfont}{}{0pt}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\fontsize{13pt}{16pt}\selectfont}{}{0pt}{}
+\titlespacing*{\section}{0pt}{0.8cm}{0.45cm}
+\titlespacing*{\subsection}{0pt}{0.45cm}{0.25cm}
+\titlespacing*{\subsubsection}{0pt}{0.35cm}{0.2cm}
+% Số trang ở giữa đầu mỗi trang (theo yêu cầu mẫu đề cương)
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{17pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyhead[C]{\thepage}\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}}
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\chap}[1]{\clearpage\section*{#1}\phantomsection\addcontentsline{toc}{section}{#1}}
+\newcommand{\secx}[1]{\subsection*{#1}\phantomsection\addcontentsline{toc}{subsection}{#1}}
+\newcommand{\subsecx}[1]{\subsubsection*{#1}}
+
+\begin{document}
+\pagenumbering{arabic}
+
+% ============================================================
+% BÌA ĐỀ CƯƠNG (Phụ lục 1)
+% ============================================================
+\begin{titlepage}
+\thispagestyle{empty}
+\coverframe
+\begin{center}
+{\fontsize{14pt}{18pt}\selectfont\bfseries BỘ GIÁO DỤC VÀ ĐÀO TẠO}\\[0.15cm]
+{\fontsize{14pt}{18pt}\selectfont\bfseries TRƯỜNG ĐẠI HỌC TÂN TẠO}\\[1.0cm]
+\IfFileExists{media/ttu_logo.png}{\includegraphics[width=4.6cm]{media/ttu_logo.png}}{\vspace{2.3cm}}\\[1.4cm]
+{\fontsize{15pt}{19pt}\selectfont\bfseries Võ Hữu Nhân}\\[0.15cm]
+{\fontsize{15pt}{19pt}\selectfont\bfseries MSSV: 2202083}\\[0.15cm]
+{\fontsize{15pt}{19pt}\selectfont\bfseries Lớp: Khoa học máy tính}\\[0.15cm]
+{\fontsize{15pt}{19pt}\selectfont\bfseries Khóa: 2022 - 2026}\\[1.3cm]
+{\fontsize{15pt}{19pt}\selectfont\bfseries NGHIÊN CỨU VÀ XÂY DỰNG HỆ THỐNG TÁC NHÂN TỰ CHỦ HỖ TRỢ VẬN HÀNH MARKETING SỐ}\\[0.9cm]
+{\fontsize{14pt}{18pt}\selectfont\bfseries ĐỀ CƯƠNG KHÓA LUẬN TỐT NGHIỆP CỬ NHÂN KHOA HỌC MÁY TÍNH}
+\end{center}
+\vfill
+\begin{center}
+{\fontsize{14pt}{18pt}\selectfont\bfseries TÂY NINH -- THÁNG 7 NĂM 2026}
+\end{center}
+\end{titlepage}
+
+\clearpage
+\setcounter{page}{1}
+
+% ============================================================
+% DANH MỤC CÁC CHỮ VIẾT TẮT (Phụ lục 6)
+% ============================================================
+\section*{DANH MỤC CÁC CHỮ VIẾT TẮT}
+\phantomsection\addcontentsline{toc}{section}{DANH MỤC CÁC CHỮ VIẾT TẮT}
+\begin{longtable}{L{0.22\textwidth}L{0.72\textwidth}}
+\toprule
+\textbf{Chữ viết tắt} & \textbf{Diễn giải}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Chữ viết tắt} & \textbf{Diễn giải}\\
+\midrule
+\endhead
+ACP & Agent Communication Protocol\\
+API & Application Programming Interface\\
+CLI & Command Line Interface\\
+CRM & Customer Relationship Management\\
+HTTP & HyperText Transfer Protocol\\
+JSON & JavaScript Object Notation\\
+JSONL & JSON Lines\\
+KPI & Key Performance Indicator\\
+LLM & Large Language Model (Mô hình ngôn ngữ lớn)\\
+RAG & Retrieval-Augmented Generation\\
+ReAct & Reasoning and Acting\\
+\bottomrule
+\end{longtable}
+
+% ============================================================
+% DANH MỤC CÁC BẢNG, BIỂU (Phụ lục 7)
+% ============================================================
+\section*{DANH MỤC CÁC BẢNG, BIỂU}
+\phantomsection\addcontentsline{toc}{section}{DANH MỤC CÁC BẢNG, BIỂU}
+\begin{longtable}{L{0.16\textwidth}L{0.78\textwidth}}
+\toprule
+\textbf{Bảng} & \textbf{Tên bảng}\\
+\midrule
+\endhead
+Bảng 2.1 & Kế hoạch tổ chức và tiến độ thực hiện đề tài\\
+Bảng 3.1 & Các nhóm chức năng dự kiến của hệ thống\\
+Bảng 3.2 & Các loại kịch bản kiểm thử dự kiến\\
+\bottomrule
+\end{longtable}
+
+% ============================================================
+% MỤC LỤC (Phụ lục 2)
+% ============================================================
+\clearpage
+\tableofcontents
+
+% ============================================================
+% ĐẶT VẤN ĐỀ
+% ============================================================
+\chap{ĐẶT VẤN ĐỀ}
+Marketing số hiện nay không chỉ là viết một bài quảng cáo rồi đăng lên mạng xã hội. Một người làm marketing thường phải hiểu sản phẩm, xác định khách hàng mục tiêu, chuẩn bị thông điệp, lập kế hoạch nội dung, chỉnh sửa nội dung theo từng nền tảng, theo dõi phản hồi và tổng hợp báo cáo. Với cá nhân, nhà sáng tạo nội dung, cửa hàng nhỏ hoặc nhóm marketing ít nhân sự, các công việc này dễ bị lặp lại, tốn nhiều thời gian và thường nằm rải rác trên nhiều công cụ khác nhau. Khi mỗi lần làm người dùng phải nhập lại thông tin sản phẩm, giọng văn, khách hàng mục tiêu và các ràng buộc nội dung thì quá trình làm việc bị chậm và dễ thiếu nhất quán về thông tin thương hiệu.
+
+Mô hình ngôn ngữ lớn (LLM) có thể hỗ trợ tốt các tác vụ ngôn ngữ như phân tích yêu cầu, viết nháp, tóm tắt và chuyển đổi văn phong. Tuy nhiên, nếu chỉ dùng mô hình như một chatbot riêng lẻ, hệ thống thường không có bộ nhớ dài hạn, không quản lý phiên rõ ràng và khó kiểm soát khi cần dùng công cụ. Các nghiên cứu về LLM agent cho thấy một hệ thống tác nhân thường cần kết hợp mô hình ngôn ngữ với bộ nhớ, công cụ, lập lịch và chính sách an toàn.
+
+Từ những lý do trên, đề tài ``Nghiên cứu và xây dựng hệ thống tác nhân tự chủ hỗ trợ vận hành marketing số'' được lựa chọn. Đề tài không đặt mục tiêu xây dựng một nền tảng marketing hoàn chỉnh thay thế con người, mà tập trung nghiên cứu, tùy biến và phát triển một hệ thống tác nhân dựa trên nền tảng có sẵn để hỗ trợ một số công việc phổ biến trong vận hành marketing số. Các hành động có thể gây ảnh hưởng ra bên ngoài như đăng bài hay thay đổi ngân sách quảng cáo vẫn cần có sự kiểm tra và phê duyệt của người dùng.
+
+\textbf{Tính cấp thiết của đề tài.} Nhu cầu ứng dụng trí tuệ nhân tạo vào marketing tại Việt Nam đang tăng nhanh, trong khi phần lớn cá nhân và nhóm nhỏ chưa có công cụ đủ để duy trì ngữ cảnh làm việc và phối hợp nhiều bước marketing một cách có kiểm soát. Việc nghiên cứu một hệ thống tác nhân tự chủ có bộ nhớ, công cụ, lập lịch và cơ chế phê duyệt là hướng đi phù hợp để hỗ trợ nhóm người dùng này.
+
+% ============================================================
+% CHƯƠNG 1
+% ============================================================
+\chap{CHƯƠNG 1: TỔNG QUAN CÁC VẤN ĐỀ NGHIÊN CỨU}
+
+\secx{1.1. Tổng quan về bài toán và cơ sở lý thuyết}
+Bài toán của đề tài là hỗ trợ vận hành marketing số cho nhóm người dùng có nguồn lực hạn chế. Vận hành marketing số là nhóm công việc thực hiện thường xuyên để duy trì hoạt động marketing trên môi trường số, gồm nhiều bước liên quan nhau như xác định mục tiêu, tìm hiểu khách hàng, chuẩn bị nội dung, điều chỉnh nội dung theo nền tảng, theo dõi lịch công việc và tổng hợp kết quả. Đề tài dựa trên bốn nhóm cơ sở lý thuyết chính:
+
+\begin{itemize}
+\item \textbf{Marketing số và vận hành marketing số:} khung khái niệm về hoạt động marketing trên môi trường số và các công việc vận hành lặp lại cần được hỗ trợ.
+\item \textbf{Mô hình ngôn ngữ lớn:} nền tảng kiến trúc Transformer và khả năng thực hiện nhiều tác vụ ngôn ngữ thông qua hướng dẫn bằng ngôn ngữ tự nhiên, được dùng để phân tích yêu cầu, tạo bản nháp và tổng hợp thông tin.
+\item \textbf{Hệ thống tác nhân tự chủ dựa trên LLM:} mô hình tác nhân kết hợp lập kế hoạch, bộ nhớ và sử dụng công cụ; các mẫu suy luận -- hành động như ReAct và Toolformer làm cơ sở cho lớp công cụ của hệ thống.
+\item \textbf{Bộ nhớ, lập lịch và kiểm soát hành động:} truy xuất ngữ cảnh (RAG) để dùng lại thông tin thương hiệu qua nhiều phiên; lập lịch tác vụ định kỳ; và nguyên tắc \emph{đọc trước, tạo bản nháp trước, phê duyệt trước khi ghi} để giữ quyền quyết định cuối cùng cho người dùng.
+\end{itemize}
+
+\secx{1.2. Tổng quan các công trình liên quan và hướng tiếp cận}
+Các nghiên cứu trong và ngoài nước cho thấy hai hướng phổ biến: (1) dùng LLM như một chatbot sinh nội dung theo từng lượt, và (2) xây dựng hệ thống tác nhân kết hợp mô hình với bộ nhớ, công cụ và cơ chế điều phối nhiều bước. Hướng thứ nhất tạo nội dung nhanh nhưng khó duy trì ngữ cảnh thương hiệu và thiếu kiểm soát hành động. Hướng thứ hai phù hợp hơn với bài toán vận hành marketing nhiều bước.
+
+Trên cơ sở đó, đề tài lựa chọn hướng \textbf{kế thừa và tùy biến một nền tảng tác nhân tự chủ có sẵn}, sau đó bổ sung lớp nghiệp vụ marketing (đối tượng dữ liệu, công cụ tạo bản nháp, quy trình phê duyệt, lập lịch) thay vì xây dựng lại toàn bộ tác nhân từ đầu. Cách tiếp cận này giúp tập trung nguồn lực vào phần khác biệt của bài toán marketing, đồng thời tận dụng các thành phần nền đã ổn định như lõi xử lý tác nhân, bộ nhớ, phiên làm việc, lập lịch và định tuyến kênh.
+
+% ============================================================
+% CHƯƠNG 2
+% ============================================================
+\chap{CHƯƠNG 2: ĐỐI TƯỢNG, PHƯƠNG PHÁP VÀ TỔ CHỨC NGHIÊN CỨU}
+
+\secx{2.1. Đối tượng nghiên cứu}
+Đối tượng nghiên cứu của đề tài là hệ thống tác nhân tự chủ hỗ trợ vận hành marketing số. Trọng tâm là cách tổ chức và vận hành của hệ thống tác nhân, bao gồm lõi xử lý tác nhân, mô hình ngôn ngữ lớn, bộ nhớ, công cụ, tác vụ định kỳ, kênh giao tiếp và cơ chế kiểm soát hành động. Cụ thể, đề tài tập trung nghiên cứu cách kế thừa, phân tích, tùy biến và phát triển một nền tảng tác nhân có sẵn để phù hợp với bài toán vận hành marketing số.
+
+Nhóm người dùng hướng đến gồm cá nhân làm marketing, nhà sáng tạo nội dung, chủ cửa hàng nhỏ hoặc nhóm marketing có nguồn lực hạn chế. Nhóm người dùng này không phải là đối tượng nghiên cứu chính, mà được dùng làm căn cứ để xác định yêu cầu chức năng, phạm vi hỗ trợ và các kịch bản kiểm thử của hệ thống.
+
+\textbf{Phạm vi.} Đề tài giới hạn ở mức thử nghiệm: phân tích, tùy biến và phát triển hệ thống dựa trên nền tảng tác nhân có sẵn, kiểm tra qua các kịch bản sử dụng giả lập với dữ liệu thương hiệu công khai (Vinamilk) và dữ liệu chiến dịch kiểm thử. Hệ thống không tự động đăng bài, gửi tin nhắn hàng loạt, chỉnh sửa chiến dịch hay thay đổi ngân sách quảng cáo khi chưa được người dùng phê duyệt; không đi sâu vào theo dõi thời gian thực, tối ưu ngân sách quảng cáo hay dự báo doanh thu.
+
+\secx{2.2. Phương pháp nghiên cứu}
+Đề tài kết hợp bốn phương pháp:
+\begin{enumerate}
+\item \textbf{Nghiên cứu tài liệu:} tìm hiểu các khái niệm nền tảng về marketing số, mô hình ngôn ngữ lớn và hệ thống tác nhân tự chủ để làm cơ sở xác định bài toán, phạm vi và hướng thiết kế.
+\item \textbf{Phân tích và tổng hợp:} phân tích bài toán vận hành marketing thành các nhóm chức năng cụ thể, sau đó tổng hợp để xác định phạm vi hệ thống và cách hỗ trợ người dùng.
+\item \textbf{Mô hình hóa:} biểu diễn các thành phần chính, luồng xử lý, dữ liệu lưu trữ và quan hệ giữa các module; tổ chức hệ thống theo hướng mô-đun để thuận tiện hiện thực, kiểm thử và mở rộng.
+\item \textbf{Thực nghiệm:} hiện thực hệ thống theo thiết kế, sau đó kiểm thử bằng các kịch bản sử dụng giả lập tập trung vào các chức năng chính và cơ chế phê duyệt.
+\end{enumerate}
+
+\secx{2.3. Tổ chức nghiên cứu}
+Quá trình nghiên cứu được tổ chức theo hướng \emph{Design Science Research}: xác định vấn đề, thiết kế và xây dựng hiện vật (hệ thống tác nhân), rồi đánh giá qua kịch bản kiểm thử. Công cụ và môi trường dự kiến gồm TypeScript/Node.js, lưu trữ tệp JSONL và SQLite, gateway giao tiếp thời gian thực, nhà cung cấp mô hình ngôn ngữ lớn, cùng bộ công cụ kiểm thử (Vitest) và đóng gói (Docker). Tiến độ thực hiện được trình bày tóm tắt trong Bảng 2.1.
+
+\begin{longtable}{L{0.10\textwidth}L{0.50\textwidth}L{0.30\textwidth}}
+\caption{Kế hoạch tổ chức và tiến độ thực hiện đề tài}\\
+\toprule
+\textbf{Giai đoạn} & \textbf{Nội dung công việc} & \textbf{Thời gian dự kiến}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Giai đoạn} & \textbf{Nội dung công việc} & \textbf{Thời gian dự kiến}\\
+\midrule
+\endhead
+1 & Nghiên cứu tài liệu, xác định bài toán và phạm vi & Tháng 1 -- 2/2026\\
+2 & Phân tích yêu cầu, khảo sát nền tảng tác nhân kế thừa & Tháng 2 -- 3/2026\\
+3 & Thiết kế kiến trúc, mô hình dữ liệu và luồng xử lý & Tháng 3 -- 4/2026\\
+4 & Hiện thực các chức năng marketing và cơ chế phê duyệt & Tháng 4 -- 5/2026\\
+5 & Kiểm thử theo kịch bản, đánh giá kết quả & Tháng 5/2026\\
+6 & Tổng hợp, viết báo cáo và hoàn thiện đồ án & Tháng 6/2026\\
+\bottomrule
+\end{longtable}
+
+% ============================================================
+% CHƯƠNG 3
+% ============================================================
+\chap{CHƯƠNG 3: KẾT QUẢ NGHIÊN CỨU DỰ KIẾN VÀ BÀN LUẬN DỰ KIẾN}
+
+\secx{3.1. Kết quả nghiên cứu dự kiến}
+Kết quả dự kiến là một hệ thống tác nhân tự chủ có thể chạy thử nghiệm, được xây dựng trên nền tảng tác nhân kế thừa và bổ sung lớp nghiệp vụ marketing. Hệ thống dự kiến được tổ chức theo năm lớp: lớp giao tiếp (CLI, web, kênh nhắn tin), lớp gateway điều phối yêu cầu và vòng đời phiên, lõi xử lý tác nhân, lớp năng lực (công cụ, bộ nhớ, lập lịch, đối tượng marketing) và lớp lưu trữ. Trong kiến trúc này, phần kế thừa gồm lõi tác nhân, bộ nhớ, phiên, lập lịch và định tuyến kênh; phần tự xây dựng và điều chỉnh gồm các đối tượng dữ liệu marketing, công cụ tạo bản nháp, quy trình phê duyệt và các luồng nghiệp vụ.
+
+Các nhóm chức năng chính dự kiến được liệt kê trong Bảng 3.1.
+
+\begin{longtable}{L{0.30\textwidth}L{0.62\textwidth}}
+\caption{Các nhóm chức năng dự kiến của hệ thống}\\
+\toprule
+\textbf{Nhóm chức năng} & \textbf{Mô tả}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Nhóm chức năng} & \textbf{Mô tả}\\
+\midrule
+\endhead
+Phân tích yêu cầu marketing & Tiếp nhận brief, xác định thông tin còn thiếu, làm rõ mục tiêu và ràng buộc.\\
+Nghiên cứu và lập kế hoạch & Hỗ trợ nghiên cứu thị trường, đối thủ ở mức tham khảo; lập kế hoạch truyền thông và lịch nội dung.\\
+Tạo và chỉnh sửa nội dung & Tạo bản nháp bài đăng, chú thích, email, kịch bản; tạo biến thể và điều chỉnh theo từng nền tảng.\\
+Lập lịch tác vụ định kỳ & Tạo và chạy tác vụ theo lịch, ví dụ nhắc chuẩn bị nội dung hoặc tạo báo cáo tuần.\\
+Báo cáo và phân tích hỗ trợ & Tổng hợp báo cáo marketing và phân tích số liệu quảng cáo ở mức tham khảo.\\
+Phối hợp nhóm và kiểm soát hành động & Định tuyến qua các kênh giao tiếp; áp dụng quy trình phê duyệt trước các thao tác gửi ra bên ngoài.\\
+\bottomrule
+\end{longtable}
+
+Hệ thống dự kiến được kiểm thử qua các kịch bản sử dụng giả lập, phân loại theo Bảng 3.2 để đánh giá không chỉ ``chạy được hay không'' mà cả hành vi ở tình huống biên, tình huống phải từ chối và chuyển trạng thái không hợp lệ.
+
+\begin{longtable}{L{0.34\textwidth}L{0.58\textwidth}}
+\caption{Các loại kịch bản kiểm thử dự kiến}\\
+\toprule
+\textbf{Loại kịch bản} & \textbf{Mục đích kiểm thử}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Loại kịch bản} & \textbf{Mục đích kiểm thử}\\
+\midrule
+\endhead
+Đường thành công & Xác nhận chức năng chạy đúng với đầu vào hợp lệ.\\
+Tình huống biên & Kiểm tra hành vi với đầu vào thiếu, rỗng hoặc bất thường.\\
+Tình huống phải từ chối / vi phạm & Xác nhận hệ thống chặn đúng thao tác cần phê duyệt hoặc ngoài phạm vi.\\
+Chuyển trạng thái không hợp lệ & Kiểm tra vòng đời bản nháp và phê duyệt không bị bỏ qua bước.\\
+\bottomrule
+\end{longtable}
+
+\secx{3.2. Bàn luận dự kiến}
+Dự kiến hệ thống đáp ứng được mục tiêu xây dựng một tác nhân tự chủ hỗ trợ vận hành marketing số ở mức nền tảng: duy trì ngữ cảnh thương hiệu qua nhiều phiên, hỗ trợ quy trình nhiều bước và giữ quyền quyết định cuối cùng cho người dùng thông qua cơ chế phê duyệt. Việc kế thừa nền tảng tác nhân có sẵn giúp rút ngắn thời gian phát triển phần lõi, nhưng cũng đặt ra thách thức về ranh giới giữa phần kế thừa và phần tự xây, cũng như về mức độ phủ của kiểm thử.
+
+Các điểm dự kiến cần bàn luận gồm: mức độ ổn định của kết quả do mô hình ngôn ngữ lớn sinh ra, giới hạn khi chưa đánh giá trên dữ liệu vận hành nội bộ thật trong thời gian dài, và khả năng mở rộng sang các tích hợp quảng cáo và CRM ở dạng chỉ đọc trong tương lai.
+
+% ============================================================
+% KẾT LUẬN DỰ KIẾN
+% ============================================================
+\chap{KẾT LUẬN DỰ KIẾN}
+Đề tài dự kiến hoàn thành việc nghiên cứu, tùy biến và phát triển một hệ thống tác nhân tự chủ hỗ trợ vận hành marketing số dựa trên nền tảng tác nhân có sẵn. Hệ thống dự kiến hỗ trợ các chức năng chính gồm phân tích yêu cầu, lập kế hoạch, tạo và chỉnh sửa nội dung, lập lịch tác vụ định kỳ, tổng hợp báo cáo và kiểm soát các thao tác cần phê duyệt. Kết quả được đánh giá qua các kịch bản kiểm thử giả lập theo bốn loại nêu ở Chương 3.
+
+Đóng góp dự kiến của đề tài là làm rõ cách áp dụng hệ thống tác nhân tự chủ vào bài toán vận hành marketing số, phân biệt rõ phần kế thừa và phần tự xây, và đề xuất một bộ kịch bản kiểm thử phản ánh hành vi thực tế của tác nhân. Hạn chế và hướng phát triển sẽ được trình bày đầy đủ trong báo cáo đồ án hoàn chỉnh.
+
+% ============================================================
+% QUY TRÌNH THỰC HIỆN
+% ============================================================
+\chap{QUY TRÌNH THỰC HIỆN}
+Quy trình thực hiện đề tài gồm các bước tuần tự, bám theo phương pháp Design Science Research và kế hoạch tiến độ ở Bảng 2.1:
+\begin{enumerate}
+\item Nghiên cứu tài liệu và xác định bài toán, mục tiêu, phạm vi nghiên cứu.
+\item Phân tích yêu cầu vận hành marketing và khảo sát nền tảng tác nhân được kế thừa để xác định phần dùng lại và phần cần điều chỉnh.
+\item Thiết kế kiến trúc tổng thể, mô hình dữ liệu marketing, luồng xử lý chính và cơ chế kiểm soát hành động.
+\item Hiện thực các chức năng marketing, công cụ tạo bản nháp, lập lịch và quy trình phê duyệt trên nền tảng kế thừa.
+\item Kiểm thử hệ thống theo các kịch bản giả lập (đường thành công, tình huống biên, tình huống phải từ chối, chuyển trạng thái không hợp lệ) và đánh giá kết quả.
+\item Tổng hợp kết quả, chỉ ra hạn chế, đề xuất hướng phát triển và hoàn thiện báo cáo đồ án.
+\end{enumerate}
+
+% ============================================================
+% TÀI LIỆU THAM KHẢO
+% ============================================================
+\chap{TÀI LIỆU THAM KHẢO}
+\begin{enumerate}[leftmargin=1.1cm,label={[\arabic*]}]
+\item Brown, T. B. et al. (2020). Language Models are Few-Shot Learners. Advances in Neural Information Processing Systems.
+\item Chaffey, D. and Ellis-Chadwick, F. (2022). Digital Marketing: Strategy, Implementation and Practice (8th ed.). Pearson.
+\item Gao, Y. et al. (2023). Retrieval-Augmented Generation for Large Language Models: A Survey. arXiv preprint arXiv:2312.10997.
+\item Järvinen, J. and Taiminen, H. (2016). Harnessing marketing automation for B2B content marketing. Industrial Marketing Management, 54, 164-175.
+\item Lewis, P. et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. Advances in Neural Information Processing Systems.
+\item Peffers, K., Tuunanen, T., Rothenberger, M. A. and Chatterjee, S. (2007). A Design Science Research Methodology for Information Systems Research. Journal of Management Information Systems, 24(3), 45-77.
+\item Russell, S. and Norvig, P. (2021). Artificial Intelligence: A Modern Approach (4th ed.). Pearson.
+\item Schick, T. et al. (2023). Toolformer: Language Models Can Teach Themselves to Use Tools. arXiv preprint arXiv:2302.04761.
+\item Vaswani, A. et al. (2017). Attention Is All You Need. Advances in Neural Information Processing Systems.
+\item Wang, L. et al. (2023). A Survey on Large Language Model based Autonomous Agents. arXiv preprint arXiv:2308.11432.
+\item Wooldridge, M. (2009). An Introduction to MultiAgent Systems (2nd ed.). John Wiley \& Sons.
+\item Yao, S. et al. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. arXiv preprint arXiv:2210.03629.
+\item OpenClaw (2026). OpenClaw - Personal AI Assistant. Truy cập tại: \url{https://github.com/openclaw/openclaw} [05/06/2026].
+\item Parida, S. (2025). AI đang thay đổi diện mạo ngành marketing tại Việt Nam như thế nào? Truy cập tại: \url{https://www.rmit.edu.vn/vi/tin-tuc/tat-ca-tin-tuc/2025/mar/ai-dang-thay-doi-dien-mao-nganh-marketing-tai-viet-nam-nhu-the-nao} [12/06/2026].
+\end{enumerate}
+
+\end{document}

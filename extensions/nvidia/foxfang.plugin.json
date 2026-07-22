@@ -1,0 +1,30 @@
+{
+  "id": "nvidia",
+  "enabledByDefault": true,
+  "providers": ["nvidia"],
+  "providerAuthEnvVars": {
+    "nvidia": ["NVIDIA_API_KEY"]
+  },
+  "providerAuthChoices": [
+    {
+      "provider": "nvidia",
+      "method": "api-key",
+      "choiceId": "nvidia-api-key",
+      "choiceLabel": "NVIDIA API key",
+      "choiceHint": "NVIDIA NIM / Build API key",
+      "groupId": "nvidia",
+      "groupLabel": "NVIDIA",
+      "groupHint": "NVIDIA NIM / Build API key",
+      "optionKey": "nvidiaApiKey",
+      "cliFlag": "--nvidia-api-key",
+      "cliOption": "--nvidia-api-key <key>",
+      "cliDescription": "NVIDIA API key",
+      "onboardingScopes": ["text-inference"]
+    }
+  ],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@foxfang/fpt-cloud-provider",
+  "version": "2026.3.27",
+  "private": true,
+  "description": "FoxFang FPT Cloud provider plugin",
+  "type": "module",
+  "foxfang": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

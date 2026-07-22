@@ -1,0 +1,35 @@
+{
+  "brandId": "brand-vinamilk",
+  "name": "Vinamilk",
+  "officialWebsite": "https://www.vinamilk.com.vn/",
+  "sourceNotes": [
+    "Website chính thức mô tả Vinamilk là thương hiệu sữa hàng đầu Việt Nam, EST 1976.",
+    "Meta description trên trang chủ nêu hành trình dinh dưỡng gần 50 năm, sản phẩm đạt chuẩn quốc tế và phù hợp mọi lứa tuổi.",
+    "Trang sản phẩm Green Farm nguyên chất không đường mô tả sản phẩm sữa tươi tiệt trùng từ trang trại sinh thái và công nghệ kép đột phá."
+  ],
+  "product": {
+    "name": "Sữa tươi tiệt trùng Vinamilk Green Farm nguyên chất không đường",
+    "description": "Sữa tươi tiệt trùng Green Farm nguyên chất không đường, gắn với định vị trang trại sinh thái và công nghệ sản xuất hiện đại.",
+    "uniqueSellingPoints": [
+      "sữa tươi nguyên chất không đường",
+      "gắn với hình ảnh Green Farm và trang trại sinh thái",
+      "phù hợp truyền thông về lựa chọn dinh dưỡng hằng ngày"
+    ]
+  },
+  "audience": {
+    "primarySegment": "Gia đình trẻ và người tiêu dùng đô thị quan tâm đến dinh dưỡng hằng ngày",
+    "painPoints": [
+      "cần sản phẩm sữa dễ dùng cho sinh hoạt hằng ngày",
+      "quan tâm nguồn gốc và chất lượng sản phẩm",
+      "không muốn nội dung quảng cáo phóng đại hoặc gây hiểu nhầm về sức khỏe"
+    ]
+  },
+  "brandVoice": ["tin cậy", "tích cực", "gần gũi với gia đình Việt", "không phóng đại công dụng"],
+  "guardrails": [
+    "không tự động đăng bài khi chưa được duyệt",
+    "không đưa ra claim chữa bệnh hoặc thay thế tư vấn y tế",
+    "không phóng đại công dụng sức khỏe ngoài thông tin sản phẩm đã cung cấp",
+    "không dùng dữ liệu trẻ em hoặc thông tin cá nhân trong test",
+    "không gửi nội dung ra kênh bên ngoài nếu chưa xác định rõ kênh và chưa có phê duyệt"
+  ]
+}

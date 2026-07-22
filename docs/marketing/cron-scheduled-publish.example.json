@@ -1,0 +1,15 @@
+{
+  "comment": "Example cron jobs for due PostDraft publishing. Wire delivery channel targets in your environment.",
+  "cron": [
+    {
+      "name": "marketing-publish-due",
+      "enabled": true,
+      "schedule": { "kind": "cron", "expr": "*/15 * * * *", "tz": "Asia/Ho_Chi_Minh" },
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run marketing_scheduled_publish_due. For each item: if recommendedTool is social_meta_page_publish call social_meta_page_publish(postDraftId); else message send with marketingPostDraftId and the draft body. Then marketing_post_mark_published for each success. Report failures only."
+      }
+    }
+  ]
+}

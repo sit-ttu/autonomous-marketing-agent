@@ -1,0 +1,30 @@
+{
+  "shortMemory": {
+    "sessionId": "marketing-os-short-memory-demo",
+    "previousTurn": "Người dùng đã chọn giọng văn gần gũi, tinh tế và không phóng đại công dụng sức khỏe.",
+    "currentTurn": "Hãy viết lại CTA cho bài Facebook nhưng giữ đúng giọng văn vừa chọn."
+  },
+  "longMemory": {
+    "files": [
+      {
+        "path": "MEMORY.md",
+        "lines": [
+          "Brand Vinamilk test: giọng văn gần gũi, tinh tế, tránh cam kết sức khỏe quá mức.",
+          "Insight chiến dịch tuần 1: TikTok có tương tác tốt hơn Facebook nhưng bình luận cần theo dõi kỹ hơn."
+        ]
+      },
+      {
+        "path": "memory/marketing-insights.md",
+        "lines": [
+          "Khi lập kế hoạch mới cho Green Farm, ưu tiên nội dung giải thích nguồn gốc và thói quen sử dụng hằng ngày.",
+          "Không tự động lưu insight mới nếu người dùng chỉ yêu cầu xem nháp tạm thời."
+        ]
+      }
+    ],
+    "expectedSearchQueries": [
+      "Vinamilk Green Farm brand voice",
+      "insight tuần 1 TikTok Facebook Green Farm",
+      "ràng buộc không phóng đại sức khỏe"
+    ]
+  }
+}

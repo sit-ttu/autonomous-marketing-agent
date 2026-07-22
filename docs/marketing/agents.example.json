@@ -1,0 +1,58 @@
+{
+  "marketing": {
+    "defaultBrandId": "brand_main",
+    "defaultMetaAdAccountId": "act_REPLACE_ME",
+    "requireBrandContext": true,
+    "brandKitPath": "brand.kit.md"
+  },
+  "agents": {
+    "defaults": {
+      "workspace": "~/.foxfang/workspace-marketing"
+    },
+    "list": [
+      {
+        "id": "marketing",
+        "default": true,
+        "identity": {
+          "name": "FoxFang Marketing",
+          "theme": "marketing operations orchestrator"
+        },
+        "skills": [
+          "marketing-orchestrator",
+          "marketing-strategy",
+          "marketing-content",
+          "marketing-growth"
+        ]
+      }
+    ]
+  },
+  "plugins": {
+    "entries": {
+      "meta-ads": {
+        "enabled": true,
+        "config": {
+          "defaultAdAccountId": "act_REPLACE_ME"
+        }
+      },
+      "brave": {
+        "enabled": true
+      },
+      "github": {
+        "enabled": true,
+        "config": {
+          "defaultOwner": "YOUR_ORG",
+          "defaultRepo": "marketing-ops"
+        }
+      },
+      "social-post": {
+        "enabled": false,
+        "config": {
+          "pageId": "PAGE_ID_REPLACE_ME"
+        }
+      }
+    }
+  },
+  "approvals": {
+    "enabled": true
+  }
+}

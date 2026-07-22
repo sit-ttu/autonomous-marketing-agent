@@ -1,0 +1,28 @@
+{
+  "id": "fpt-cloud",
+  "enabledByDefault": true,
+  "providers": ["fpt-cloud"],
+  "providerAuthEnvVars": {
+    "fpt-cloud": ["FPT_CLOUD_API_KEY"]
+  },
+  "providerAuthChoices": [
+    {
+      "provider": "fpt-cloud",
+      "method": "api-key",
+      "choiceId": "fpt-cloud-api-key",
+      "choiceLabel": "FPT Cloud API key",
+      "groupId": "fpt-cloud",
+      "groupLabel": "FPT Cloud",
+      "groupHint": "API key",
+      "optionKey": "fptCloudApiKey",
+      "cliFlag": "--fpt-cloud-api-key",
+      "cliOption": "--fpt-cloud-api-key <key>",
+      "cliDescription": "FPT Cloud API key"
+    }
+  ],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}
